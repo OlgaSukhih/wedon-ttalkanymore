@@ -647,20 +647,28 @@
 
 <script>
   function showTranslation() {
-    document.getElementById("translationModal").style.display = "block";
+    const modal = document.getElementById("translationModal");
+    modal.style.display = "block";
+    modal.classList.add("open"); // Add the 'open' class to trigger the fade-in animation
   }
 
   function showDiscussion() {
-    document.getElementById("discussionModal").style.display = "block";
+    const modal = document.getElementById("discussionModal");
+    modal.style.display = "block";
+    modal.classList.add("open"); // Add the 'open' class to trigger the fade-in animation
   }
 
   function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
+    const modal = document.getElementById(modalId);
+    modal.classList.remove("open");
+    setTimeout(function () {
+      modal.style.display = "none";
+    }, 300);  // Match the fade-out duration
   }
 
   window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
-      event.target.style.display = "none";
+      closeModal(event.target.id);
     }
   }
 </script>
@@ -762,6 +770,7 @@
     margin-top: 20px;
   }
 </style>
+
 
 </body>
 </html>
