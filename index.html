@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>We Don't Talk Anymore — Listen & Understand</title>
+  <style>
+    body {
+      background-color: #1b1b2f;
+      color: #ffffff;
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 5px;
+    }
+    h2 a {
+      color: #7ec8e3;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    audio {
+      display: block;
+      margin: 30px auto;
+    }
+    .lyrics-container {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .heart-img {
+      position: absolute;
+      left: -240px;
+      top: 0;
+      width: 180px;
+    }
+    .line {
+      margin-bottom: 24px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .options {
+      display: inline-flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-left: 10px;
+      justify-content: center;
+    }
+    .choice {
+      background-color: #2f2f3d;
+      color: #ffffff;
+      border: 2px solid #555;
+      border-radius: 10px;
+      padding: 6px 16px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    .choice:hover {
+      background-color: #3f3f50;
+    }
+    .choice.correct {
+      background-color: #88b388;
+      border-color: #88b388;
+    }
+    .choice.incorrect {
+      background-color: #e8a6b5;
+      border-color: #e8a6b5;
+    }
+    .buttons {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .buttons button {
+      background-color: pink;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>We Don't Talk Anymore</h1>
+  <h2><a href="https://t.me/joinandgetinspired" target="_blank">Join&GetInspired</a></h2>
+
+  <audio controls>
+    <source src="we-dont-talk-anymore.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="lyrics-container">
+    <img class="heart-img" src="heart-image.png" alt="Heart image" />
+
+    <div class="line">
+      We don't talk anymore
+    </div>
+
+    <div class="line">
+      We don't talk anymore
+    </div>
+
+    <div class="line">
+      We don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      We don't love anymore
+    </div>
+
+    <div class="line">
+      What was all of it for?
+    </div>
+
+    <div class="line">
+      Oh, we don't talk anymore, like we used to do
+    </div>
+
+    <div class="buttons">
+      <button onclick="showTranslation()">Translation</button>
+      <button onclick="showDiscussion()">Discussion</button>
+    </div>
+
+    <div id="translationModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('translationModal')">&times;</span>
+        <h2>Translation</h2>
+        <p>
+          Мы больше не разговариваем,<br>
+          Мы больше не разговариваем,<br>
+          Мы больше не разговариваем, как раньше,<br>
+          Мы больше не любим,<br>
+          Для чего всё это было?<br>
+          О, мы больше не разговариваем, как раньше.
+        </p>
+      </div>
+    </div>
+
+    <div id="discussionModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('discussionModal')">&times;</span>
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>What emotions are conveyed in the song?</li>
+          <li>Why do you think the artist says, "We don't love anymore"?</li>
+          <li>What are the main reasons people stop talking or loving each other?</li>
+          <li>How does the song reflect a change in relationships?</li>
+        </ol>
+      </div>
+    </div>
+
+    <script>
+      function showTranslation() {
+        document.getElementById("translationModal").style.display = "block";
+      }
+
+      function showDiscussion() {
+        document.getElementById("discussionModal").style.display = "block";
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+          event.target.style.display = "none";
+        }
+      }
+    </script>
+
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        color: black;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+
+</body>
+</html>
