@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +89,95 @@
       cursor: pointer;
       border-radius: 8px;
     }
+    .feedback-message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    /* Background overlay for modals */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding-top: 60px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    /* Modal content */
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 70%;
+      max-width: 800px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(-50px);
+      transition: all 0.3s ease-in-out;
+    }
+    /* Close button styling */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+    }
+    /* Fade-in animation for modals */
+    .modal.open .modal-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .modal.open {
+      opacity: 1;
+    }
+    /* Fancy buttons for modals */
+    .fancy-btn {
+      background-color: #6c5ce7;
+      color: white;
+      font-size: 16px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .fancy-btn:hover {
+      background-color: #a29bfe;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .fancy-btn:active {
+      transform: scale(0.98);
+    }
+    /* Modal title */
+    .modal-content h2 {
+      color: #6c5ce7;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    /* Modal text */
+    .modal-content p,
+    .modal-content ol {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .modal-content ol {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -104,653 +192,456 @@
   <div class="lyrics-container">
     <img class="heart-img" src="heart-image.png" alt="Heart image" />
 
- <div class="line">
-  We don't talk anymore, we don't talk anymore
-</div>
-
-<div class="line">
-  We don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  We don't love anymore
-</div>
-
-<div class="line">
-  What was all of it for?
-</div>
-
-<div class="line">
-  Oh, we don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  I just heard you found the 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">one</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">someone</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">thing</span>
-  </span>
-  you've been looking
-</div>
-
-<div class="line">
-  You've been looking for
-</div>
-
-<div class="line">
-  I wish I would have known that wasn't 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">me</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">you</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">us</span>
-  </span>
-</div>
-
-<div class="line">
-  'Cause even after all this time I still wonder
-</div>
-
-<div class="line">
-  Why I can't move 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">on</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">forward</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">up</span>
-  </span>
-</div>
-
-<div class="line">
-  Just the way you did so easily
-</div>
-
-
-<div class="line">
-  Don't wanna know
-</div>
-
-<div class="line">
-  What kind of dress you're wearing tonight
-</div>
-
-<div class="line">
-  If he's holding onto you so tight
-</div>
-
-<div class="line">
-  The way I did before
-</div>
-
-<div class="line">
-  I overdosed
-</div>
-
-<div class="line">
-  Should've known your love was a 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">game</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">truth</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">joke</span>
-  </span>
-</div>
-
-<div class="line">
-  Now I can't get you out of my brain
-</div>
-
-<div class="line">
-  Oh, it's such a shame
-</div>
-
-<div class="line">
-  That we don't talk anymore, we don't talk anymore
-</div>
-
-<div class="line">
-  We don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  We don't love anymore
-</div>
-
-<div class="line">
-  What was all of it for?
-</div>
-
-<div class="line">
-  Oh, we don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  I just hope you're lying next to somebody
-</div>
-
-<div class="line">
-  Who knows how to love you like me
-</div>
-
-<div class="line">
-  There must be a good reason that you're 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">gone</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">here</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">around</span>
-  </span>
-</div>
-
-<div class="line">
-  Every now and then I think you
-</div>
-
-<div class="line">
-  Might want me to come show up at your door
-</div>
-
-<div class="line">
-  But I'm just too afraid that I'll be 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">wrong</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">right</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">lost</span>
-  </span>
-</div>
-
-<div class="line">
-  Don't wanna know
-</div>
-
-<div class="line">
-  If you're looking into her eyes
-</div>
-
-<div class="line">
-  If she's holding onto you so tight the way I did before
-</div>
-
-<div class="line">
-  I overdosed
-</div>
-
-<div class="line">
-  Should've known your love was a 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">game</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">truth</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">joke</span>
-  </span>
-</div>
-
-<div class="line">
-  Now I can't get you out of my brain
-</div>
-
-<div class="line">
-  Oh, it's such a shame
-</div>
-
-<div class="line">
-  That we don't talk anymore (We don't, we don't)
-</div>
-
-<div class="line">
-  We don't talk anymore (We don't, we don't)
-</div>
-
-<div class="line">
-  We don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  We don't love anymore (We don't, we don't)
-</div>
-
-<div class="line">
-  What was all of it for? (We don't, we don't)
-</div>
-
-<div class="line">
-  Oh, we don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  Like we used to do
-</div>
-
-<div class="line">
-  Don't wanna know
-</div>
-
-<div class="line">
-  What kind of dress you're wearing tonight
-</div>
-
-<div class="line">
-  If he's giving it to you just right
-</div>
-
-<div class="line">
-  The way I did before
-</div>
-
-<div class="line">
-  I overdosed
-</div>
-
-<div class="line">
-  Should've known your love was a 
-  <span class="options">
-    <span class="choice" data-correct="true" onclick="checkChoice(this)">game</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">truth</span>
-    <span class="choice" data-correct="false" onclick="checkChoice(this)">joke</span>
-  </span>
-</div>
-
-<div class="line">
-  Now I can't get you out of my brain
-</div>
-
-<div class="line">
-  Oh, it's such a shame
-</div>
-
-<div class="line">
-  That we don't talk anymore (We don't, we don't)
-</div>
-
-<div class="line">
-  We don't talk anymore (We don't, we don't)
-</div>
-
-<div class="line">
-  We don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  We don't love anymore (We don't, we don't)
-</div>
-
-<div class="line">
-  What was all of it for? (We don't, we don't)
-</div>
-
-<div class="line">
-  Oh, we don't talk anymore, like we used to do
-</div>
-
-<div class="line">
-  We don't talk anymore, oh, oh
-</div>
-
-<div class="line">
-  (What kind of dress you're wearing tonight)
-</div>
-
-<div class="line">
-  (If he's holding onto you so tight)
-</div>
-
-<div class="line">
-  The way I did before
-</div>
-
-<div class="line">
-  We don't talk anymore, oh, woah
-</div>
-
-<div class="line">
-  (Should've known your love was a game)
-</div>
-
-<div class="line">
-  (Now I can't get you out of my brain)
-</div>
-
-<div class="line">
-  Ooh, it's such a shame
-</div>
-
-<div class="line">
-  That we don't talk anymore
-</div>
-
-<div id="feedback" class="feedback-message"></div>
-
-<button id="resetButton" style="display:none" onclick="resetChoices()">Reset Choices</button>
-
-<script>
-  function checkChoice(el) {
-    const isCorrect = el.getAttribute("data-correct") === "true";
-    const siblings = el.parentElement.querySelectorAll(".choice");
-    const feedback = document.getElementById("feedback");
-    const resetButton = document.getElementById("resetButton");
-
-    // Disable further interactions after the selection
-    siblings.forEach(sib => {
-      sib.classList.remove("correct", "incorrect");
-      sib.style.pointerEvents = "none";
-    });
-
-    // Set feedback based on the correctness of the choice
-    if (isCorrect) {
-      el.classList.add("correct");
-      feedback.textContent = "Correct! Great job!";
-      feedback.style.color = "#88b388";
-    } else {
-      el.classList.add("incorrect");
-      feedback.textContent = "Oops! That's not quite right. Try again!";
-      feedback.style.color = "#e8a6b5";
-      siblings.forEach(sib => {
-        if (sib.getAttribute("data-correct") === "true") {
-          sib.classList.add("correct");
-        }
-      });
-    }
-
-    // Show reset button after choice is made
-    resetButton.style.display = "block";
-  }
-
-  function resetChoices() {
-    // Reset all choices
-    const choices = document.querySelectorAll(".choice");
-    choices.forEach(choice => {
-      choice.classList.remove("correct", "incorrect");
-      choice.style.pointerEvents = "auto"; // Re-enable clicking
-    });
-
-    // Clear feedback and hide reset button
-    document.getElementById("feedback").textContent = '';
-    document.getElementById("resetButton").style.display = "none";
-  }
-</script>
-
-<style>
-  .choice {
-    background-color: #2f2f3d;
-    color: #ffffff;
-    border: 2px solid #555;
-    border-radius: 10px;
-    padding: 6px 16px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .choice:hover {
-    background-color: #3f3f50;
-  }
-
-  .choice.correct {
-    background-color: #88b388;
-    border-color: #88b388;
-  }
-
-  .choice.incorrect {
-    background-color: #e8a6b5;
-    border-color: #e8a6b5;
-  }
-
-  .feedback-message {
-    margin-top: 20px;
-    font-size: 1.2em;
-    text-align: center;
-  }
-</style>
-
-<div id="feedback" class="feedback-message"></div>
-
-<button id="resetButton" style="display:none" onclick="resetChoices()">Reset Choices</button>
-
-<script>
-  function checkChoice(el) {
-    const isCorrect = el.getAttribute("data-correct") === "true";
-    const siblings = el.parentElement.querySelectorAll(".choice");
-    const feedback = document.getElementById("feedback");
-    const resetButton = document.getElementById("resetButton");
-
-    // Disable further interactions after the selection
-    siblings.forEach(sib => {
-      sib.classList.remove("correct", "incorrect");
-      sib.style.pointerEvents = "none";
-    });
-
-    // Set feedback based on the correctness of the choice
-    if (isCorrect) {
-      el.classList.add("correct");
-      feedback.textContent = "Correct! Great job!";
-      feedback.style.color = "#88b388";
-    } else {
-      el.classList.add("incorrect");
-      feedback.textContent = "Oops! That's not quite right. Try again!";
-      feedback.style.color = "#e8a6b5";
-      siblings.forEach(sib => {
-        if (sib.getAttribute("data-correct") === "true") {
-          sib.classList.add("correct");
-        }
-      });
-    }
-
-    // Show reset button after choice is made
-    resetButton.style.display = "block";
-  }
-
-  function resetChoices() {
-    // Reset all choices
-    const choices = document.querySelectorAll(".choice");
-    choices.forEach(choice => {
-      choice.classList.remove("correct", "incorrect");
-      choice.style.pointerEvents = "auto"; // Re-enable clicking
-    });
-
-    // Clear feedback and hide reset button
-    document.getElementById("feedback").textContent = '';
-    document.getElementById("resetButton").style.display = "none";
-  }
-</script>
-
-<style>
-  .choice {
-    background-color: #2f2f3d;
-    color: #ffffff;
-    border: 2px solid #555;
-    border-radius: 10px;
-    padding: 6px 16px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .choice:hover {
-    background-color: #3f3f50;
-  }
-
-  .choice.correct {
-    background-color: #88b388;
-    border-color: #88b388;
-  }
-
-  .choice.incorrect {
-    background-color: #e8a6b5;
-    border-color: #e8a6b5;
-  }
-
-  .feedback-message {
-    margin-top: 20px;
-    font-size: 1.2em;
-    text-align: center;
-  }
-</style>
-
-<div class="buttons">
-  <button class="fancy-btn" onclick="showTranslation()">Translation</button>
-  <button class="fancy-btn" onclick="showDiscussion()">Discussion</button>
-</div>
-
-<!-- Translation Modal -->
-<div id="translationModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('translationModal')">&times;</span>
-    <h2>Translation</h2>
-    <p>
-      Мы больше не разговариваем,<br>
-      Мы больше не общаемся,<br>
-      Мы больше не говорим,<br>
-      Как раньше.<br>
-
-      Мы больше не любим,<br>
-      Так зачем всё это было?<br>
-      О, мы больше не разговариваем,<br>
-      Как раньше.<br>
-
-      Я только что услышал, что ты нашла того, кого искала,<br>
-      Ты так долго искала его,<br>
-      Жаль, что я не знал, что это был не я.<br>
-      <!-- The rest of the translation text -->
-    </p>
+    <div class="line">
+      We don't talk anymore, we don't talk anymore
+    </div>
+
+    <div class="line">
+      We don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      We don't love anymore
+    </div>
+
+    <div class="line">
+      What was all of it for?
+    </div>
+
+    <div class="line">
+      Oh, we don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      I just heard you found the
+      <span class="options" data-correct="one">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">one</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">someone</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">thing</span>
+      </span>
+      you've been looking
+    </div>
+
+    <div class="line">
+      You've been looking for
+    </div>
+
+    <div class="line">
+      I wish I would have known that wasn't
+      <span class="options" data-correct="me">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">me</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">you</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">us</span>
+      </span>
+    </div>
+
+    <div class="line">
+      'Cause even after all this time I still wonder
+    </div>
+
+    <div class="line">
+      Why I can't move
+      <span class="options" data-correct="on">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">on</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">forward</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">up</span>
+      </span>
+    </div>
+
+    <div class="line">
+      Just the way you did so easily
+    </div>
+
+    <div class="line">
+      Don't wanna know
+    </div>
+
+    <div class="line">
+      What kind of dress you're wearing tonight
+    </div>
+
+    <div class="line">
+      If he's holding onto you so tight
+    </div>
+
+    <div class="line">
+      The way I did before
+    </div>
+
+    <div class="line">
+      I overdosed
+    </div>
+
+    <div class="line">
+      Should've known your love was a
+      <span class="options" data-correct="game">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">game</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">truth</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">joke</span>
+      </span>
+    </div>
+
+    <div class="line">
+      Now I can't get you out of my brain
+    </div>
+
+    <div class="line">
+      Oh, it's such a shame
+    </div>
+
+    <div class="line">
+      That we don't talk anymore, we don't talk anymore
+    </div>
+
+    <div class="line">
+      We don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      We don't love anymore
+    </div>
+
+    <div class="line">
+      What was all of it for?
+    </div>
+
+    <div class="line">
+      Oh, we don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      I just hope you're lying next to somebody
+    </div>
+
+    <div class="line">
+      Who knows how to love you like me
+    </div>
+
+    <div class="line">
+      There must be a good reason that you're
+      <span class="options" data-correct="gone">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">gone</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">here</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">around</span>
+      </span>
+    </div>
+
+    <div class="line">
+      Every now and then I think you
+    </div>
+
+    <div class="line">
+      Might want me to come show up at your door
+    </div>
+
+    <div class="line">
+      But I'm just too afraid that I'll be
+      <span class="options" data-correct="wrong">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">wrong</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">right</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">lost</span>
+      </span>
+    </div>
+
+    <div class="line">
+      Don't wanna know
+    </div>
+
+    <div class="line">
+      If you're looking into her eyes
+    </div>
+
+    <div class="line">
+      If she's holding onto you so tight the way I did before
+    </div>
+
+    <div class="line">
+      I overdosed
+    </div>
+
+    <div class="line">
+      Should've known your love was a
+      <span class="options" data-correct="game">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">game</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">truth</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">joke</span>
+      </span>
+    </div>
+
+    <div class="line">
+      Now I can't get you out of my brain
+    </div>
+
+    <div class="line">
+      Oh, it's such a shame
+    </div>
+
+    <div class="line">
+      That we don't talk anymore (We don't, we don't)
+    </div>
+
+    <div class="line">
+      We don't talk anymore (We don't, we don't)
+    </div>
+
+    <div class="line">
+      We don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      We don't love anymore (We don't, we don't)
+    </div>
+
+    <div class="line">
+      What was all of it for? (We don't, we don't)
+    </div>
+
+    <div class="line">
+      Oh, we don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      Like we used to do
+    </div>
+
+    <div class="line">
+      Don't wanna know
+    </div>
+
+    <div class="line">
+      What kind of dress you're wearing tonight
+    </div>
+
+    <div class="line">
+      If he's giving it to you just right
+    </div>
+
+    <div class="line">
+      The way I did before
+    </div>
+
+    <div class="line">
+      I overdosed
+    </div>
+
+    <div class="line">
+      Should've known your love was a
+      <span class="options" data-correct="game">
+        <span class="choice" data-correct="true" onclick="checkChoice(this)">game</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">truth</span>
+        <span class="choice" data-correct="false" onclick="checkChoice(this)">joke</span>
+      </span>
+    </div>
+
+    <div class="line">
+      Now I can't get you out of my brain
+    </div>
+
+    <div class="line">
+      Oh, it's such a shame
+    </div>
+
+    <div class="line">
+      That we don't talk anymore (We don't, we don't)
+    </div>
+
+    <div class="line">
+      We don't talk anymore (We don't, we don't)
+    </div>
+
+    <div class="line">
+      We don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      We don't love anymore (We don't, we don't)
+    </div>
+
+    <div class="line">
+      What was all of it for? (We don't, we don't)
+    </div>
+
+    <div class="line">
+      Oh, we don't talk anymore, like we used to do
+    </div>
+
+    <div class="line">
+      We don't talk anymore, oh, oh
+    </div>
+
+    <div class="line">
+      (What kind of dress you're wearing tonight)
+    </div>
+
+    <div class="line">
+      (If he's holding onto you so tight)
+    </div>
+
+    <div class="line">
+      The way I did before
+    </div>
+
+    <div class="line">
+      We don't talk anymore, oh, woah
+    </div>
+
+    <div class="line">
+      (Should've known your love was a game)
+    </div>
+
+    <div class="line">
+      (Now I can't get you out of my brain)
+    </div>
+
+    <div class="line">
+      Ooh, it's such a shame
+    </div>
+
+    <div class="line">
+      That we don't talk anymore
+    </div>
+
+    <div id="feedback" class="feedback-message"></div>
+
+    <button id="resetButton" style="display:none" onclick="resetChoices()">Reset Choices</button>
+
+    <div class="buttons">
+      <button class="fancy-btn" onclick="showTranslation()">Translation</button>
+      <button class="fancy-btn" onclick="showDiscussion()">Discussion</button>
+    </div>
+
+    <!-- Translation Modal -->
+    <div id="translationModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('translationModal')">&times;</span>
+        <h2>Translation</h2>
+        <p>
+          Мы больше не разговариваем,<br>
+          Мы больше не общаемся,<br>
+          Мы больше не говорим,<br>
+          Как раньше.<br>
+          Мы больше не любим,<br>
+          Так зачем всё это было?<br>
+          О, мы больше не разговариваем,<br>
+          Как раньше.<br>
+          Я только что услышал, что ты нашла того, кого искала,<br>
+          Ты так долго искала его,<br>
+          Жаль, что я не знал, что это был не я.<br>
+          <!-- The rest of the translation text -->
+        </p>
+      </div>
+    </div>
+
+    <!-- Discussion Modal -->
+    <div id="discussionModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('discussionModal')">&times;</span>
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>What emotions are conveyed in the song?</li>
+          <li>Why do you think the artist says, "We don't love anymore"?</li>
+          <li>What are the main reasons people stop talking or loving each other?</li>
+          <li>How does the song reflect a change in relationships?</li>
+        </ol>
+      </div>
+    </div>
+
   </div>
-</div>
 
-<!-- Discussion Modal -->
-<div id="discussionModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('discussionModal')">&times;</span>
-    <h2>Discussion Questions</h2>
-    <ol>
-      <li>What emotions are conveyed in the song?</li>
-      <li>Why do you think the artist says, "We don't love anymore"?</li>
-      <li>What are the main reasons people stop talking or loving each other?</li>
-      <li>How does the song reflect a change in relationships?</li>
-    </ol>
-  </div>
-</div>
-
-<script>
-  function showTranslation() {
-    const modal = document.getElementById("translationModal");
-    modal.style.display = "block";
-    modal.classList.add("open"); // Add the 'open' class to trigger the fade-in animation
-  }
-
-  function showDiscussion() {
-    const modal = document.getElementById("discussionModal");
-    modal.style.display = "block";
-    modal.classList.add("open"); // Add the 'open' class to trigger the fade-in animation
-  }
-
-  function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.classList.remove("open");
-    setTimeout(function () {
-      modal.style.display = "none";
-    }, 300);  // Match the fade-out duration
-  }
-
-  window.onclick = function(event) {
-    if (event.target.classList.contains('modal')) {
-      closeModal(event.target.id);
+  <script>
+    // Функция для перемешивания массива (алгоритм Фишера-Йетса)
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
-  }
-</script>
 
-<style>
-  /* Background overlay for modals */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); /* Darker background */
-    padding-top: 60px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
+    // Перемешиваем варианты ответов в каждом .options
+    document.querySelectorAll('.options').forEach(optionsContainer => {
+      const choices = Array.from(optionsContainer.querySelectorAll('.choice'));
+      // Перемешиваем массив элементов
+      shuffleArray(choices);
+      // Очищаем контейнер и добавляем элементы в новом порядке
+      optionsContainer.innerHTML = '';
+      choices.forEach(choice => {
+        optionsContainer.appendChild(choice);
+      });
+    });
 
-  /* Modal content */
-  .modal-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 12px;
-    width: 70%;
-    max-width: 800px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(-50px);
-    transition: all 0.3s ease-in-out;
-  }
+    function checkChoice(el) {
+      const isCorrect = el.getAttribute("data-correct") === "true";
+      const siblings = el.parentElement.querySelectorAll(".choice");
+      const feedback = document.getElementById("feedback");
+      const resetButton = document.getElementById("resetButton");
 
-  /* Close button styling */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
+      // Disable further interactions after the selection
+      siblings.forEach(sib => {
+        sib.classList.remove("correct", "incorrect");
+        sib.style.pointerEvents = "none";
+      });
 
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-  }
+      // Set feedback based on the correctness of the choice
+      if (isCorrect) {
+        el.classList.add("correct");
+        feedback.textContent = "Correct! Great job!";
+        feedback.style.color = "#88b388";
+      } else {
+        el.classList.add("incorrect");
+        feedback.textContent = "Oops! That's not quite right. Try again!";
+        feedback.style.color = "#e8a6b5";
+        siblings.forEach(sib => {
+          if (sib.getAttribute("data-correct") === "true") {
+            sib.classList.add("correct");
+          }
+        });
+      }
 
-  /* Fade-in animation for modals */
-  .modal.open .modal-content {
-    opacity: 1;
-    transform: translateY(0);
-  }
+      // Show reset button after choice is made
+      resetButton.style.display = "block";
+    }
 
-  .modal.open {
-    opacity: 1;
-  }
+    function resetChoices() {
+      // Reset all choices
+      const choices = document.querySelectorAll(".choice");
+      choices.forEach(choice => {
+        choice.classList.remove("correct", "incorrect");
+        choice.style.pointerEvents = "auto"; // Re-enable clicking
+      });
 
-  /* Fancy buttons for modals */
-  .fancy-btn {
-    background-color: #6c5ce7;
-    color: white;
-    font-size: 16px;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+      // Clear feedback and hide reset button
+      document.getElementById("feedback").textContent = '';
+      document.getElementById("resetButton").style.display = "none";
+    }
 
-  .fancy-btn:hover {
-    background-color: #a29bfe;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
+    function showTranslation() {
+      const modal = document.getElementById("translationModal");
+      modal.style.display = "block";
+      modal.classList.add("open");
+    }
 
-  .fancy-btn:active {
-    transform: scale(0.98);
-  }
+    function showDiscussion() {
+      const modal = document.getElementById("discussionModal");
+      modal.style.display = "block";
+      modal.classList.add("open");
+    }
 
-  /* Modal title */
-  .modal-content h2 {
-    color: #6c5ce7;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove("open");
+      setTimeout(function () {
+        modal.style.display = "none";
+      }, 300);
+    }
 
-  /* Modal text */
-  .modal-content p,
-  .modal-content ol {
-    color: #333;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .modal-content ol {
-    margin-top: 20px;
-  }
-</style>
-
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        closeModal(event.target.id);
+      }
+    }
+  </script>
 
 </body>
 </html>
+
